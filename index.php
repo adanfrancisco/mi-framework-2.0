@@ -1,5 +1,8 @@
 <?php
 
+
+require_once 'vendor/autoload.php';
+
 require_once 'src/ControllerInterface.php';
 require_once 'src/RandController.php';
 require_once 'src/NameController.php';
@@ -9,15 +12,16 @@ require_once 'mi-framework/Request.php';
 require_once 'mi-framework/Response.php';
 
 
-use Mixplay\Framework\{
-    ControllerInterface,
-    RandController,
-    NameController,
-    MiFramework,
-    Routes,
-    Request,
-    Response,
+use Mixplay\{
+    Controllers\ControllerInterface as ControllerInterface,
+    Controllers\RandController as RandController,
+    Controllers\NameController as NameController,
+    Framework\MiFramework as MiFramework,
+    Framework\Routes as Routes,
+    Framework\Request as Request,
+    Framework\Response as Response,
 };
+
 
 
 
@@ -40,13 +44,27 @@ echo $miFramework->run();
 
 
 
-/** TEMPLATE TWING */
-require_once '/path/to/vendor/autoload.php';
+/** TEMPLATE TWIG */
 
-$loader = new \Twig\Loader\ArrayLoader([
-    'index' => 'Hello {{ name }}!',
-]);
-$twig = new \Twig\Environment($loader);
+/**
+ * ver unos videos de twig
+ * 
+ */
 
-echo $twig->render('index', ['name' => 'Fabien']);
+/*
+    $loader = new \Twig\Loader\ArrayLoader([
+        'index' => 'Hello {{ name }}!',
+    ]);
+    $twig = new \Twig\Environment($loader);
 
+    echo $twig->render('index', ['name' => 'Fabien']);
+*/
+
+
+/*
+    node 
+    express 
+    react 
+    lumin 
+    laravel 
+*/
