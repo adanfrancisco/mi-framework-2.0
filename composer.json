@@ -1,0 +1,12 @@
+{
+    "name": "isantobuono/proyecto-framework",
+    "require": {
+        "twig/twig": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "src/":"Mixplay/Controller/",
+            "mi-framework": "Mixplay/Framework\/"
+        }
+    }
+}
