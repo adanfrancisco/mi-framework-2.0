@@ -33,7 +33,13 @@ class MiFramework
             if(!empty($argv)){
                 $this->argv = $argv; 
             }
-            return $result['controller']::{$this->method}($_REQUEST,$this->argv);
+            $controller = new $result['controller'];
+            
+            return $controller->{$this->method}($_REQUEST,$this->argv);
+            /*
+                $response = $result['controller']::{$this->method}($_REQUEST,$this->argv);
+                return $response->render();
+            */
         }else {
             return $result;
         }

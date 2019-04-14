@@ -1,25 +1,26 @@
 <?php
 
 
-require_once 'vendor/autoload.php';
 
-require_once 'src/ControllerInterface.php';
-require_once 'src/RandController.php';
-require_once 'src/NameController.php';
-require_once 'mi-framework/MiFramework.php';
-require_once 'mi-framework/Routes.php';
-require_once 'mi-framework/Request.php';
-require_once 'mi-framework/Response.php';
+
+require_once './src/controllers/ControllerInterface.php';
+require_once './src/controllers/RandController.php';
+require_once './src/controllers/NameController.php';
+require_once './mi-framework/MiFramework.php';
+require_once './mi-framework/Routes.php';
+require_once './mi-framework/Request.php';
+require_once './mi-framework/Response.php';
 
 
 use Mixplay\{
     Controllers\ControllerInterface as ControllerInterface,
     Controllers\RandController as RandController,
     Controllers\NameController as NameController,
+    Controllers\BattleShipController as BattleShipController,
     Framework\MiFramework as MiFramework,
     Framework\Routes as Routes,
     Framework\Request as Request,
-    Framework\Response as Response,
+    Framework\Response as Response
 };
 
 
@@ -36,7 +37,10 @@ $miFramework->setRute('POST','rand/{min}/{max}', RandController::class);
 
 $miFramework->setRute('GET','name/{name}', NameController::class);
 $miFramework->setRute('POST','name/{name}/{surname}', NameController::class);
-// Agregar mas controllers
+// Agregar mas controllers de juegos
+
+$miFramework->setRute('GET','battleShip/', BattleShipController::class);
+
 
 
 
@@ -58,8 +62,8 @@ echo $miFramework->run();
     $twig = new \Twig\Environment($loader);
 
     echo $twig->render('index', ['name' => 'Fabien']);
-*/
 
+*/
 
 /*
     node 
