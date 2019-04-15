@@ -56,6 +56,7 @@ class Truco
         for ($i=0; $i < $rondas || $rondas == 1; $i++) { 
             for ($j=0; $j < count($this->equipA); $j++) { 
                 $mesa[] = $this->equipA[$j]->tirarcarta();
+                
                 $mesa[] = $this->equipB[$j]->tirarcarta();
             }
             $ronda = $this->checkCartasDeLaMesa($mesa);
