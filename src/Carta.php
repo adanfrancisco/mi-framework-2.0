@@ -19,10 +19,14 @@
             return $this->value;
         }
         public function getGameValue(){
-            return $this->value;
+            return $this->gameValue;
         }
         public function setGameValue(int $gameValue){
             $this->gameValue = $gameValue;
+        }
+        public function show()
+        {
+            return $this->value."-".$this->type;
         }
 
     }

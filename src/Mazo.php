@@ -81,12 +81,13 @@ class Mazo
                     4 => 0,
                     5 => 4,
                     6 => 8,
-                    7 => 36,
+                    7 => 12,
                     10 => 14,
                     11 => 18,
                     12 => 22
                 ]
             ];
+            //var_dump($valores);
             foreach ($this->mazo as $key => $carta) {
                 $this->mazo[$key]->setGameValue( $valores[ $carta->getType()][ $carta->getValue()] );
             }
@@ -96,6 +97,11 @@ class Mazo
     public function repartirMano(){
         $this->mezclar();
         return array(array_pop( $this->mazo  ), array_pop( $this->mazo  ), array_pop( $this->mazo  ) );
+    }
+    public function devolverMano($meza){
+        foreach ($meza as $carta) {
+            array_push($this->mazo, $carta);
+        }
     }
     public function getMazo(){
         

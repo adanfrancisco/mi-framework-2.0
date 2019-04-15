@@ -32,8 +32,9 @@ class Player
         $this->mano = $mano;
     }
     public function tirarcarta()
-    {
-        
+    {   $carta = array_pop($this->mano);
+        echo "{$this->name} tira {$carta->show()} equipo {$this->getKey()}\n";
+        return $carta;
     }
 
     public function show()
