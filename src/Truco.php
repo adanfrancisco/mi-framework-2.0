@@ -62,22 +62,22 @@ class Truco
             if( $ronda === 'A')
             {
                 $puntajeA++;
-                echo "gana ".($i+1)."° mano equipo A\n";
-                echo "\n";
+                echo "gana ".($i+1)."° mano equipo A\n</br>";
+                echo "\n</br>";
             }elseif ( $ronda === 'B') {
                 $puntajeB++;
-                echo "gana ".($i+1)."° mano equipo B\n";
-                echo "\n";
+                echo "gana ".($i+1)."° mano equipo B\n</br>";
+                echo "\n</br>";
             }else{
                 $rondas--;
-                echo "parda ".($i+1)."° mano \n";
-                echo "\n";
+                echo "parda ".($i+1)."° mano \n</br>";
+                echo "\n</br>";
             }
             $mesa=[];
         }
         if ($puntajeA > $puntajeB ) {
             $this->puntajeA++;
-            echo "gana equipo A\n";
+            echo "gana equipo A\n</br>";
 
         }else{
             $this->puntajeB++;

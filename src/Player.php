@@ -33,7 +33,7 @@ class Player
     }
     public function tirarcarta()
     {   $carta = array_pop($this->mano);
-        echo "{$this->name} tira {$carta->show()} equipo {$this->getKey()}\n";
+        echo "{$this->name} del equipo {$this->key} tira <img src=".$carta->getImg()." alt='Smiley face' height='42' width='42'></br>";
         return $carta;
     }
 

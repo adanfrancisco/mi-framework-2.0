@@ -8,9 +8,13 @@
         public $img = '';
 
 
-        public function __construct(int $value , string $type){
+        public function __construct(int $value , string $type, string $img){
             $this->type = $type;
             $this->value = $value;
+            $this->img = $img;
+        }
+        public function getImg(){
+            return $this->img;
         }
         public function getType(){
             return $this->type;

@@ -31,11 +31,11 @@ class Mazo
             {
                 $p++;
             }
-            !($this->type === 'española-40' && ( ( ($i) % 12 )+1 == 8 || ( ($i) % 12 )+1 == 9) )? $this->mazo[] = new Carta( ( ($i) % 12 )+1, $palo[$p] ) : 0;
+            !($this->type === 'española-40' && ( ( ($i) % 12 )+1 == 8 || ( ($i) % 12 )+1 == 9) )? $this->mazo[] = new Carta( ( ($i) % 12 )+1, $palo[$p], "./img/".$palo[$p]."/".( ( ($i) % 12 )+1).".jpg" ) : 0;
         }
         if($this->type != 'española-40'){
-            $this->mazo[] = new Carta(  0 , 'comodin' );
-            $this->mazo[] = new Carta(  0 , 'comodin' );
+            $this->mazo[] = new Carta(  0 , 'comodin', "./img/comodin.jpg" );
+            $this->mazo[] = new Carta(  0 , 'comodin', "./img/comodin.jpg" );
         }else {
             $valores = [ 
                 'Basto' => [ 
