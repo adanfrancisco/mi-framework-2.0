@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+               
+
+        <title>Tateti</title>
+    <style type="text/css">    
+        td.something {
+            text-align:center;
+            max-width: 20px;
+            min-width: 20px;
+            max-height: 20px;
+            min-height: 20px;
+        }
+        
+    </style>
+    </head>
+    <body>
+            <table class="table" border="1">
+                
+                <tbody>
+                    {% for key, linea in tablero %} 
+                    <tr class="something">              
+                        {% for item in linea %}
+                            {% if item == 1 %}
+                                <td class="something">&nbsp</td>
+                            {% else %}
+                                <td class="something"> {{ item }} </td>
+                            {% endif %}                    
+                        {% endfor %}
+                    </tr>       
+                    {% endfor %}
+                </tbody>
+            </table>
+    </body>
+</html>

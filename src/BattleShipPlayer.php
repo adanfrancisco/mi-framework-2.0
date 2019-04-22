@@ -17,15 +17,11 @@ class BattleShipPlayer
     {
         $this->name = $name;
         $this->createTables(10);
-        //echo " CREATING TABLE </br>";
         $this->lose = $this->createShips(4);
-        //echo " CREATING SHIPS </br>";
-
         //$this->printShips();                 // IMPRIME BARCOS DEL PLAYER
         $this->setShips();
         //$this->printTable();               // IMPRIME LA TABLA DE PLAYER
         //var_dump($this->enemyTable);       // IMPRIME TABLA DE SHOTS AL ENEMIGO
-        //echo " SHIPS COLOCADOS</br>";
         $this->shots = 0;
         $this->fails = 0;
         $this->success = 0;
@@ -70,7 +66,6 @@ class BattleShipPlayer
         return $response;
 
     }
-
     public function sendShot()
     {
         $posible = false;
@@ -177,7 +172,6 @@ class BattleShipPlayer
             //echo "sending: {$this->getName()}". json_encode($coords)."</br>";
         return json_encode($coords);
     }
-
     public function createTables(int $n) 
     {
         for ($i=0; $i < $n; $i++) 
@@ -189,7 +183,6 @@ class BattleShipPlayer
             }
         }
     }
-
     public function setShips()
     {
         for ($vuelta=0; $vuelta < count($this->ships); $vuelta++) {        
@@ -243,107 +236,21 @@ class BattleShipPlayer
     }
     public function printTable()
     {   
-        /*
-        for ($i=0; $i < count($this->table); $i++) { 
-            
-            var_dump($this->table[$i]);
-            
-        }
-        */
-        $respuesta= "
-            <table  align='center' border=1 cellspacing=1 cellpadding=1>
-                <tr>
-                    <td>                    
-                        <table border='1'>
-                            <caption>{$this->getName()}</caption>                                
-                                <thead>
-                                    <tr>
-                                        <th scope='col'>#</th>";
-                                    for ($i=0; $i < 10; $i++) { 
-                                        $respuesta.= "<th scope='col'>{$i}</th>";
-                                    }                     
-                                        
-                        $respuesta.="</tr>
-                                </thead>
-                                <tbody>";
-                                foreach ($this->table as $key => $line) {
-                                    $respuesta.= "<tr>
-                                                    <td scope='col'>$key</td>";
-                                    foreach ($line as $item) {                
-                                        if ($item ==='A') {
-                                            $respuesta.= "<td bgcolor='blue' >▒</td>";
-                                        }elseif($item ==='X') {
-                                            $respuesta.= "<td bgcolor='red'>$item</td>";
-                                        }else{
-                                            $respuesta.= "<td>$item</td>";
-                                        }                
-                                    }
-                                    $respuesta.= "</tr>";
-                                } 
-                        $respuesta.="</tbody></table>                        
-                    </td>
-                    <td>                    
-                        <table border='1'>
-                            <caption>Enemy</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope='col'>#</th>";
-                                        for ($i=0; $i < 10; $i++) { 
-                            $respuesta.= "<th scope='col'>{$i}</th>";
-                                        }                     
-                                            
-                            $respuesta.="</tr>
-                                </thead>
-                                <tbody>";
-                                foreach ($this->enemyTable as $key2 => $line) {
-                                    $respuesta.= "<tr>
-                                            <td scope='col'>$key2</td>";
-                                    foreach ($line as $item) {                
-                                        if ($item ==='A') {
-                                            $respuesta.= "<td bgcolor='blue'>▒</td>";
-                                        }elseif($item ==='X') {
-                                            $respuesta.= "<td bgcolor='red'>$item</td>";
-                                        }else{
-                                            $respuesta.= "<td>$item</td>";
-                                        }                
-                                    }
-                                    $respuesta.= "</tr>";
-                                } 
-                        $respuesta.=    "</table>
-                </td>
-            </tr>
-        </table>";
-        echo $respuesta;   
-        /*   
-        $respuesta.= "
-        <table border='1'>
-            <caption>{$this->getName()}</caption>";
-        foreach ($this->table as $line) {
-            $respuesta.= "<tr>";
-            foreach ($line as $item) {                
-                if ($item ==='A') {
-                    $respuesta.= "<td bgcolor='blue'>▒</td>";
-                }elseif($item ==='X') {
-                    $respuesta.= "<td bgcolor='red'>$item</td>";
-                }else{
-                    $respuesta.= "<td>$item</td>";
-                }                
-            }
-            $respuesta.= "</tr>";
-        } 
-        $respuesta.=    "</table>
-            
-            </br>";*/
+        $loader = new Twig_Loader_Filesystem( './templates');
+        $twig = new Twig_Environment( $loader, [] );
+        $tablero = $this->table;
+        $enemyTable = $this->enemyTable;
+        $name = $this->name;
+        
+        return ( $twig->render( 'tablero.twig', compact( 'tablero' , 'enemyTable', 'name') ) );
     }
     public function printShips()
     {   
-        
         echo "[ ";
         for ($i=0; $i < count($this->ships)-1; $i++) { 
             echo count($this->ships[$i]).",";
         }
-        echo count( $this->ships[count($this->ships)-1]) ." ]</br>";   
-        
+        echo count( $this->ships[count($this->ships)-1]) ." ]</br>";        
         
     }
     public function available(int $coordX, int $coordy, $enemy = null)

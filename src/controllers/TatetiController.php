@@ -9,14 +9,15 @@ class TatetiController implements ControllerInterface
     public function get($request,$argv)
     {   
         $players = [];
-        $players[] = new Player(0, 'X', 'Ivan');
-        $players[] = new Player(1, 'O', 'Pablo');
+        $players[] = new Player('Ivan',0, 'X');
+        $players[] = new Player('Pablo',1, 'O');
         $tateti = new Tateti($players);
         $tateti->run();
     }
 
     public function post($request,$argv)
     {
+        
     }
 
 }

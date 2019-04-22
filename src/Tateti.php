@@ -79,17 +79,13 @@ class Tateti
     }
     public function print()
     {
-        foreach ($this->tablero as $line) {
-            foreach ($line as $key => $item) {
-                if($key == count($line)-1)
-                {
-                    echo $item. "</br>";
-                }else {
-                    echo $item. '-';
-                }
-            }
-        } 
-        echo "</br>";
+        
+        $loader = new Twig_Loader_Filesystem( './templates');
+        $twig = new Twig_Environment( $loader, [] );
+        $tablero = $this->tablero;
+        
+
+        return ( $twig->render( 'tateti.twig', compact( 'tablero' ) ) );
     }
 
     public function checkVertical($key)
@@ -183,7 +179,7 @@ class Tateti
         while( !$this->winner() && $jugadas<9) {            
             echo "jugando: ". $this->key. "</br>";            
             $this->play();
-            $this->print();
+            echo $this->print();
             $this->nextPlayer();
             $jugadas++;  
         }

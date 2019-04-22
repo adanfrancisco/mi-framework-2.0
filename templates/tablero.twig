@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>tablero</title>
+        <script type="text/javascript" src="./templates/funtions.js"></script>
+        
+    </head>
+    <body>
+        <table  align='center' border=1 cellspacing=1 cellpadding=1>
+            <tr>
+                <td>                    
+                    <table border='1'>
+                        <caption>{{name}}</caption>                                
+                        <thead>
+                            <tr>
+                                <th scope='col'>#</th>
+                                {% for i in 0..9 %}
+                                    <th scope='col'>{{i}}</th>
+                                {% endfor %}                                        
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for keyx, line in tablero %}
+                                <tr>
+                                    <td scope='col'> {{keyx}} </td>
+                                    {% for keyy, item in line %}            
+                                        {% if item == 'A'  %}
+                                            <td bgcolor='blue' >▒</td>
+                                        {% elseif item == 'X' %}
+                                            <td bgcolor='red'> {{item}} </td>
+                                        {% else %}
+                                            <td> {{item}} </td>
+                                        {% endif %}                
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>                        
+                </td>
+                <td>                    
+                    <table border='1'>
+                        <caption>Enemy</caption>
+                        <thead>
+                            <tr>
+                                <th scope='col'>#</th>
+                            {% for  i in 0..9 %} 
+                                <th scope='col'> {{i}} </th>
+                            {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for keyx,line in enemyTable %}
+                            <tr>
+                                <td scope='col'> {{keyx}} </td>
+                                {% for keyy, item  in line %}               
+                                    {% if item =='A' %}
+                                            <td bgcolor='blue' clickeable onclick='coord({{keyx}} , {{keyy}} )'>▒</td>
+                                        {% elseif item =='X' %}
+                                            <td bgcolor='red'> {{item}} </td>
+                                        {% else %}
+                                            <td> {{item}} </td>                                                      
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
