@@ -1,6 +1,6 @@
 <?php
 
-namespace Mixplay\Framework;
+namespace Mixplay\MiFramework;
 
 class Response{
     

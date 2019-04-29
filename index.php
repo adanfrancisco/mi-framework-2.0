@@ -4,24 +4,24 @@ ini_set('display_errors', 1);
 require './vendor/autoload.php';
 
 /* FRAMEWORK */
-/*
-    require_once './mi-framework/MiFramework.php';
-    require_once './mi-framework/Routes.php';
-    require_once './mi-framework/Request.php';
-    require_once './mi-framework/Response.php';*/
+
+    require_once './src/MiFramework/MiFramework.php';
+    require_once './src/MiFramework/Routes.php';
+    require_once './src/MiFramework/Request.php';
+    require_once './src/MiFramework/Response.php';
 
 /* CONTROLLERS */
-/*
-    require_once './src/controllers/ControllerInterface.php';
-    require_once './src/controllers/RandController.php';
-    require_once './src/controllers/NameController.php';
-    require_once './src/controllers/BattleShipController.php';
-    require_once './src/controllers/TatetiController.php';
-    require_once './src/controllers/TrucoController.php';
-    */
+
+    require_once './src/Controllers/ControllerInterface.php';
+    require_once './src/Controllers/RandController.php';
+    require_once './src/Controllers/NameController.php';
+    require_once './src/Controllers/BattleShipController.php';
+    require_once './src/Controllers/TatetiController.php';
+    require_once './src/Controllers/TrucoController.php';
+    
 
 /* CLASS */
-/*
+
     require_once './src/BattleShip.php';
     require_once './src/BattleShipPlayer.php';
     require_once './src/Carta.php';
@@ -30,14 +30,14 @@ require './vendor/autoload.php';
     require_once './src/Ship.php';
     require_once './src/Tateti.php';
     require_once './src/Truco.php';
-    */
+    
 /** */
 use Mixplay\{
     /* FRAMEWORK */
-        Framework\MiFramework as MiFramework,
-        Framework\Routes as Routes,
-        Framework\Request as Request,
-        Framework\Response as Response,
+        MiFramework\MiFramework as MiFramework,
+        MiFramework\Routes as Routes,
+        MiFramework\Request as Request,
+        MiFramework\Response as Response,
     /* CONTROLLERS */
         Controllers\ControllerInterface as ControllerInterface,
         Controllers\RandController as RandController,
@@ -46,9 +46,9 @@ use Mixplay\{
         Controllers\TatetiController as TatetiController,
         Controllers\TrucoController as TrucoController,
     /* CLASS */
-        BattleShip\BattleShip as BattleShip,
-        BattleShip\BattleShipPlayer as BattleShipPlayer,
-        BattleShip\Ship as Ship,
+        BattleShip as BattleShip,
+        BattleShipPlayer as BattleShipPlayer,
+        Ship as Ship,
         Carta as Carta,
         Mazo as Mazo,
         Player as Player,
@@ -58,7 +58,7 @@ use Mixplay\{
 
 
 
-require './vendor/autoload.php';
+
 
 
 
