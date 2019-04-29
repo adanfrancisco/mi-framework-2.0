@@ -36,7 +36,7 @@ use BattleShipPlayer;
 $players[] = new Player('Ivan',0, 'X');
 $players[] = new Player('Pablo',1, 'O');
 $battleShipPlayer = new BattleShipPlayer('pablo');
-echo $battleShipPlayer->printTable();
+$battleShipPlayer->printTable();
 $tateti->run();
 
 

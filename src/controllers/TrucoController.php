@@ -1,8 +1,9 @@
 <?php
+namespace Mixplay\Controllers;
 
 
-require_once 'Player.php';
-require_once 'Truco.php';
+/* require_once 'Player.php';
+require_once 'Truco.php'; */
 
 class TrucoController implements ControllerInterface
 {    

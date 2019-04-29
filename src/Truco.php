@@ -1,8 +1,9 @@
 <?php
-
+    namespace Mixplay;
+/* 
 require_once './Carta.php';
 require_once "./Mazo.php";
-require_once "./Player.php";
+require_once "./Player.php"; */
 
 class Truco
 {

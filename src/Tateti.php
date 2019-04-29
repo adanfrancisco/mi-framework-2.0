@@ -1,4 +1,5 @@
 <?php
+    namespace Mixplay;
 
 class Tateti
 {

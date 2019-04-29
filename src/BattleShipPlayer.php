@@ -1,5 +1,8 @@
 <?php
 
+namespace Mixplay\BattleShip;
+
+
 class BattleShipPlayer
 {
     const FILAS = 10;

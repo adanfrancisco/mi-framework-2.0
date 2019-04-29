@@ -1,4 +1,5 @@
 <?php
+namespace Mixplay\BattleShip;
 
 class Ship
 {

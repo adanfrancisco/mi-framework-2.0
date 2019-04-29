@@ -1,5 +1,5 @@
 <?php
-
+    namespace Mixplay;
     class Carta
     {
         private $type;

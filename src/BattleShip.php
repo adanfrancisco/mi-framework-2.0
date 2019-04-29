@@ -1,5 +1,5 @@
 <?php
-
+namespace Mixplay\BattleShip;
 class BattleShip
 {
     private $playerA;
@@ -64,8 +64,8 @@ class BattleShip
                     
                     
                     
-                    echo $response. "en: $shot" ;
-                    $this->playerB->printTable();
+                    //echo $response. "en: $shot" ;
+                    //$this->playerB->printTable();
 
 
 
@@ -105,7 +105,9 @@ class BattleShip
                 success = {$this->shots['B']['success']}";
 
     }
-
+    public function printTable(){
+        return $this->playerA->printTable();
+    }
     //winner() chequea que niguno de los tableros esten sin barcos
     //shot( x,y ) el usuario de turno dispara al tablero del otro y recive un mensaje de Agua o Le diste a mi barco
 

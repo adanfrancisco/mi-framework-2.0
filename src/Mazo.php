@@ -1,4 +1,6 @@
 <?php
+    namespace Mixplay;
+
 class Mazo
 {
     public $mazo = [];

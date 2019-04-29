@@ -1,7 +1,8 @@
 <?php
-
+namespace Mixplay\Controllers;
+/* 
 require_once 'Player.php';
-require_once 'Tateti.php';
+require_once 'Tateti.php'; */
 
 class TatetiController implements ControllerInterface
 {    

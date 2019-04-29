@@ -5,8 +5,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Mixplay\\Controller\\":"src/",
-            "Mixplay\\Framework\\": "mi-framework/"
+            "Mixplay\\": "src/"
+
         }
     }
 }

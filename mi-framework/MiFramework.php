@@ -1,6 +1,7 @@
 <?php
 
 namespace Mixplay\Framework;
+
 class MiFramework
 {
     private $rutes;
