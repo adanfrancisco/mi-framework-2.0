@@ -5,14 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>tablero</title>
-        <script type="text/javascript" src="./templates/funtions.js"></script>
-        
+        <script type="text/javascript" src="../src/js/function.js"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.4.0.js"
+            integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
+            crossorigin="anonymous">
+        </script>
     </head>
     <body>
         <table  align='center' border=1 cellspacing=1 cellpadding=1>
             <tr>
                 <td>                    
-                    <table border='1'>
+                    <table border='1' id='player'>
                         <caption>{{name}}</caption>                                
                         <thead>
                             <tr>
@@ -27,12 +31,13 @@
                                 <tr>
                                     <td scope='col'> {{keyx}} </td>
                                     {% for keyy, item in line %}            
+                                        {% set idTdPlayer = (keyx ~ keyy) %}
                                         {% if item == 'A'  %}
-                                            <td bgcolor='blue' >▒</td>
+                                            <td bgcolor='white' id="{{idTdPlayer}}" >▒</td>
                                         {% elseif item == 'X' %}
-                                            <td bgcolor='red'> {{item}} </td>
+                                            <td bgcolor='red' id="{{idTdPlayer}}"> {{item}} </td>
                                         {% else %}
-                                            <td> {{item}} </td>
+                                            <td id="{{idTdPlayer}}"> {{item}} </td>
                                         {% endif %}                
                                     {% endfor %}
                                 </tr>
@@ -41,7 +46,7 @@
                     </table>                        
                 </td>
                 <td>                    
-                    <table border='1'>
+                    <table border='1' id='enemy'>
                         <caption>Enemy</caption>
                         <thead>
                             <tr>
@@ -56,12 +61,13 @@
                             <tr>
                                 <td scope='col'> {{keyx}} </td>
                                 {% for keyy, item  in line %}               
+                                    {% set idTdEnemy = (keyx ~ keyy) %}
                                     {% if item =='A' %}
-                                            <td bgcolor='blue' clickeable onclick='coord({{keyx}} , {{keyy}} )'>▒</td>
-                                        {% elseif item =='X' %}
-                                            <td bgcolor='red'> {{item}} </td>
-                                        {% else %}
-                                            <td> {{item}} </td>                                                      
+                                        <td bgcolor='white' id="{{idTdEnemy}}" clickeable onclick='BattleShip.shot({{keyx}} , {{keyy}} )'>▒</td>
+                                    {% elseif item =='X' %}
+                                        <td bgcolor='red' id="{{idTdEnemy}}" > {{item}} </td>
+                                    {% else %}
+                                        <td id="{{idTdEnemy}}" clickeable onclick='BattleShip.shot({{keyx}} , {{keyy}} )'> {{item}} </td>                                                      
                                     {% endif %}
                                 {% endfor %}
                             </tr>

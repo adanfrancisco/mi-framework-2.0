@@ -47,6 +47,7 @@ class Routes
                 return 'method not allowed';
             }
         }else {
+            echo "no posible";
             return 'method not allowed';
         }
     }

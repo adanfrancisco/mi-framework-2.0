@@ -14,28 +14,41 @@ class BattleShipPlayer
     private $lose;
     private $iA;
     private $lastIA;
+    private $shots;
+    private $fails;
+    private $success;
     
 
-    public function __construct( string $name)
-    {
-        $this->name = $name;
-        $this->createTables(10);
-        $this->lose = $this->createShips(4);
-        //$this->printShips();                 // IMPRIME BARCOS DEL PLAYER
-        $this->setShips();
-        //$this->printTable();               // IMPRIME LA TABLA DE PLAYER
-        //var_dump($this->enemyTable);       // IMPRIME TABLA DE SHOTS AL ENEMIGO
-        $this->shots = 0;
-        $this->fails = 0;
-        $this->success = 0;
-
-        //IA
-        $this->iA=0;
-        $this->lastIA=0;
+    public function __construct( string $name, $player = null)
+    {   
+        if($player === null){
+            $this->name = $name;
+            $this->createTables(10);
+            $this->lose = $this->createShips(4);
+            $this->setShips();
+            $this->shots = 0;
+            $this->fails = 0;
+            $this->success = 0;
+    
+            //IA
+            $this->iA=0;
+            $this->lastIA=0;
+        }else{
+            $this->table = $player->table;
+            $this->enemyTable = $player->enemyTable;
+            $this->ships = $player->ships;
+            $this->name = $player->name;
+            $this->lose =$player->lose;
+            $this->iA = $player->iA;
+            $this->lastIA = $player->lastIA;
+            $this->shots = $player->shots;
+            $this->fails = $player->fails;
+            $this->success = $player->success;
+        }
     }
     public function setIA($coord)
     {
-        $values = json_decode($coord);
+        $values = ($coord);
         $this->iA=$values;
         if ($this->lastIA==0)
         {
@@ -43,12 +56,12 @@ class BattleShipPlayer
         }
  
     }
-    public function receiveShot(string $coords)
+    public function receiveShot($coords)
     {
-        //echo "{$this->getName()} receiveShot in : ". $coords."</br>";
+        $llegaAReceiveShot = "{$this->getName()} receiveShot BattleShipPlayer in : ". json_encode($coords) ."\n";
 
 
-        $values = json_decode($coords);
+        $values = $coords;
         $x = $values[0];
         $y = $values[1];
         $response = '';
@@ -66,7 +79,10 @@ class BattleShipPlayer
             return $response;
         }
         $this->table[$x][$y]='X';
-        return $response;
+        $a = new \stdClass;
+        $a->respuestaShot = $response;
+        $a->llegaAReceiveShot = $llegaAReceiveShot;
+        return $a;
 
     }
     public function sendShot()
@@ -173,7 +189,7 @@ class BattleShipPlayer
             $coords[]=$b;
             $this->shots++;
             //echo "sending: {$this->getName()}". json_encode($coords)."</br>";
-        return json_encode($coords);
+        return $coords;
     }
     public function createTables(int $n) 
     {
@@ -239,8 +255,8 @@ class BattleShipPlayer
     }
     public function printTable()
     {   
-        $loader = new Twig_Loader_Filesystem( './templates');
-        $twig = new Twig_Environment( $loader, [] );
+        $loader = new \Twig_Loader_Filesystem( './templates');
+        $twig = new \Twig_Environment( $loader, [] );
         $tablero = $this->table;
         $enemyTable = $this->enemyTable;
         $name = $this->name;
@@ -364,5 +380,25 @@ class BattleShipPlayer
     public function getName()
     {
         return $this->name;
+    }
+    public function serializeToJson() : string {
+        $obj = new \stdClass;
+        $obj->table = $this->table;
+        $obj->enemyTable = $this->enemyTable;
+        $obj->ships = $this->ships;
+        $obj->name = $this->name;
+        $obj->lose = $this->lose;
+        $obj->iA = $this->iA;
+        $obj->lastIA = $this->lastIA;        
+        $obj->shots = $this->shots;
+        $obj->fails = $this->fails;
+        $obj->success =$this->success;
+        return serialize( $obj );
+    }
+    public function getTable(){
+        return $this->table;
+    }
+    public function setEnemyTable($table){
+        $this->enemyTable = $table;
     }
 }

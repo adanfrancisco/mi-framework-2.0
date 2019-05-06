@@ -1,6 +1,7 @@
 <?php
-error_reporting(E_ALL);
+error_reporting(E_ALL & ~E_USER_DEPRECATED & ~E_DEPRECATED & ~E_NOTICE & ~E_WARNING  & ~E_STRICT);
 ini_set('display_errors', 1);
+session_start();
 require './vendor/autoload.php';
 
 /* FRAMEWORK */
@@ -56,16 +57,9 @@ use Mixplay\{
         Truco as Truco
 };
 
-
-
-
-
-
-
-
-
 $miFramework = new MiFramework;
 
+/*
 $miFramework->setRute('GET','rand/', RandController::class);
 $miFramework->setRute('GET','rand/{min}', RandController::class);
 $miFramework->setRute('GET','rand/{min}/{max}', RandController::class);
@@ -75,11 +69,11 @@ $miFramework->setRute('POST','rand/{min}/{max}', RandController::class);
 
 $miFramework->setRute('GET','name/{name}', NameController::class);
 $miFramework->setRute('POST','name/{name}/{surname}', NameController::class);
+*/
+$miFramework->setRute('GET','BattleShip/',new BattleShipController);
+$miFramework->setRute('POST','shot/', new BattleShipController);
 
-$miFramework->setRute('GET','battleShip/', BattleShipController::class);
-
-
-
+//echo $miFramework->printRutes();
 
 echo $miFramework->run();
 
